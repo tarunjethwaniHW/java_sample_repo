@@ -25,7 +25,7 @@ public class AmqMessageProducer {
                 eventType, accountId, accountName);
         log.info("Publishing JMS message to queue {}: {}", queueName, payload);
         try {
-            jmsTemplate.convertAndSend("SF-BA0352-EBMQueue.local", payload);
+            jmsTemplate.convertAndSend(queueName, payload);
         } catch (Exception e) {
             log.error("Failed to publish JMS message to queue {}", queueName, e);
         }
