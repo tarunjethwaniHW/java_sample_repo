@@ -23,7 +23,6 @@ public class AmqMessageProducer {
     public void publishEvent(String eventType, Long accountId, String accountName) {
         String payload = String.format("{\"eventType\": \"%s\", \"accountId\": %d, \"accountName\": \"%s\"}", 
                 eventType, accountId, accountName);
-        queueName = "SF-BA0352-EBMQueue.local";
         log.info("Publishing JMS message to queue {}: {}", queueName, payload);
         try {
             jmsTemplate.convertAndSend(queueName, payload);
